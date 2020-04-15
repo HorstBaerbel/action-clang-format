@@ -14,6 +14,8 @@ RUN apt update
 RUN apt -y install clang-format-9
 RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-9 100
 
+RUN ls
+
 COPY run-clang-format.py /run-clang-format.py
 RUN chmod +x /run-clang-format.py
 COPY entrypoint.sh /entrypoint.sh
