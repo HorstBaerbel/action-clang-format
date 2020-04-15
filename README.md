@@ -1,4 +1,4 @@
-# action-clang-format - Check repository using clang-format
+# action-clang-format - A GitHub action to check repository using clang-format
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,7 +12,7 @@ All of this is under the [MIT License](LICENSE).
 
 # Usage
 
-* Make sure you have a .clang-format file in the path you want to run the action on.
+* Make sure you have a .clang-format file in the path you want to run the action on. An example is included with [.clang-format](.clang-format).
 * Create a new workflow file, e.g. ./github/workflows/clang-format.yml:
 
 ```yaml

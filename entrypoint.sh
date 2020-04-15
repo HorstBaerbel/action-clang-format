@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Terminate upon errors
 set -e
 # Run format script

@@ -10,6 +10,9 @@ LABEL repository="https://github.com/HorstBaerbel/action-clang-format"
 LABEL homepage="https://github.com/HorstBaerbel/action-clang-format"
 LABEL maintainer="Bim Overbohm <bim.overbohm@googlemail.com>"
 
+RUN apt-get update
+RUN apt-get -y install clang-format
+
 COPY "run-clang-format.py" "run-clang-format.py"
 RUN chmod +x /run-clang-format.py
 COPY "entrypoint.sh" "/entrypoint.sh"

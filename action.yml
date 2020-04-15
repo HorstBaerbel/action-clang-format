@@ -17,4 +17,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.sourcedir inputs.excludedir }}
+    - ${{ inputs.sourcedir }}
+    - ${{ inputs.excludedir }}
