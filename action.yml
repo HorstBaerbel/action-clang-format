@@ -1,0 +1,20 @@
+name: 'action-clang-format'
+description: 'Check repository using clang-format'
+author: 'HorstBaerbel / Bim Overbohm'
+branding:
+  icon: check-circle
+  color: gray-dark
+inputs:
+  sourcedir:
+    description: 'Source directory'
+    required: false
+    default: '.'
+  excludedir:
+    description: 'Exclude directory'
+    required: false
+    default: './build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.sourcedir inputs.excludedir }}
