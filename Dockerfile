@@ -13,7 +13,7 @@ LABEL maintainer="Bim Overbohm <bim.overbohm@googlemail.com>"
 RUN apt update
 RUN apt -y install clang-format
 
-COPY "run-clang-format.py" "run-clang-format.py"
+COPY "run-clang-format.py" "/run-clang-format.py"
 RUN chmod +x /run-clang-format.py
 COPY "entrypoint.sh" "/entrypoint.sh"
 RUN chmod +x /entrypoint.sh
