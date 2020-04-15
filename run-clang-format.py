@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Run clang-format recursively and parallel on directory
 # Usage: run-clang-format sourcedir excludedir
 
