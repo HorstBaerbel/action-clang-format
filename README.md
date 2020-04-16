@@ -31,7 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format
-      uses: HorstBaerbel/action-clang-format@master
+      uses: HorstBaerbel/action-clang-format@1.0
       # These are optional (defaults displayed)
       with:
         scandir: '.'
@@ -40,7 +40,7 @@ jobs:
         style: 'file'
 ```
 
-## Parameters
+## Parameters (optional), see action.yml
 
 * **scandir**: Directory to scan, e.g. '/bla'.
 * **excludedirs**: Directories below scandir to exclude from scanning, e.g. "build,test,src/third_party".
