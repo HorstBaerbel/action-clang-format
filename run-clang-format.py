@@ -4,7 +4,7 @@
 # Usage: run-clang-format sourcedir excludedirs extensions style
 # extensions and excludedirs are specified as comma-separated 
 # string without dot, e.g. 'c,cpp'
-# e.g. run-clang-format . build.test c,cpp file
+# e.g. run-clang-format . build,test c,cpp file
 
 import os, sys, subprocess, multiprocessing
 manager = multiprocessing.Manager()
@@ -12,7 +12,9 @@ failedfiles = manager.list()
 
 sourcedir = sys.argv[1].rstrip(os.sep)
 print("Source directory: " + sourcedir)
-excludedirs = tuple([(sourcedir + os.sep + s).rstrip(os.sep) for s in sys.argv[2].split(',')])
+excludedirs = ()
+if sys.argv[2]:
+    excludedirs = tuple([(sourcedir + os.sep + s).rstrip(os.sep) for s in sys.argv[2].split(',')])
 print("Exclude directories: " + str(excludedirs))
 extensions = tuple([("." + s) for s in sys.argv[3].split(',')])
 print("Extensions: " + str(extensions))
