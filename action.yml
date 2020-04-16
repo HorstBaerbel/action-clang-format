@@ -5,8 +5,8 @@ branding:
   icon: check-circle
   color: gray-dark
 inputs:
-  sourcedir:
-    description: 'Source directory'
+  scandir:
+    description: 'Scan directory'
     required: false
     default: '.'
   excludedirs:
@@ -25,7 +25,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.sourcedir }}
+    - ${{ inputs.scandir }}
     - ${{ inputs.excludedirs }}
     - ${{ inputs.extensions }}
     - ${{ inputs.style }}

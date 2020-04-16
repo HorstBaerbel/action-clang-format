@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Installs [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and runs it recursively on files a directory reports errors using a diff. Can use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file for style (if style: 'file').
+Runs [clang-format](https://clang.llvm.org/docs/ClangFormat.html) recursively on files in a directory and reports errors using a diff. Can use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file for style (when using style: 'file').
 
 If you find a bug or make an improvement your pull requests are appreciated.
 
@@ -34,7 +34,7 @@ jobs:
       uses: HorstBaerbel/action-clang-format@master
       # These are optional (defaults displayed)
       with:
-        sourcedir: '.'
+        scandir: '.'
         excludedirs: 'build'
         extensions: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
         style: 'file'
@@ -42,7 +42,7 @@ jobs:
 
 ## Parameters
 
-* **sourcedir**: Source directory to scan, e.g. '/bla'.
-* **excludedirs**: Directories below sourcedir to exclude from scanning, e.g. "build,test,src/third_party".
+* **scandir**: Directory to scan, e.g. '/bla'.
+* **excludedirs**: Directories below scandir to exclude from scanning, e.g. "build,test,src/third_party".
 * **extensions**: Extensions to include in scan, e.g. 'h,c,hpp,cpp'.
 * **style**: Style string to pass to clang-format. Use 'file' to make clang-format use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file.
