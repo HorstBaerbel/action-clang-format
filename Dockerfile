@@ -11,11 +11,9 @@ LABEL homepage="https://github.com/HorstBaerbel/action-clang-format"
 LABEL maintainer="Bim Overbohm <bim.overbohm@googlemail.com>"
 
 RUN apt update
-RUN apt -y install clang-format-9
+RUN apt -y install clang-format-9 python3
 RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-9 100
-
-RUN ls ~
-RUN find / -name run-clang-format.py
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 100
 
 COPY run-clang-format.py /run-clang-format.py
 RUN chmod +x /run-clang-format.py
