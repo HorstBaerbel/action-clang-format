@@ -1,19 +1,18 @@
-# action-clang-format - A GitHub action to check repository using clang-format
+# action-clang-format - A GitHub action to check a directory using clang-format
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Installs [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and runs it (with -style=file) recursively on all header and source files in the directory specified with "sourcedir", excluding the directory "excludedir" and reports errors. Uses a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file for style.
+Installs [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and runs it recursively on files a directory reports errors using a diff. Can use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file for style (if style: 'file').
 
 If you find a bug or make an improvement your pull requests are appreciated.
 
-# License
+## License
 
 All of this is under the [MIT License](LICENSE).
 
-# Usage
+## Usage
 
-* Make sure you have a .clang-format file in the path you want to run the action on. An example is included with [.clang-format](.clang-format).
-* Create a new workflow file, e.g. ./github/workflows/clang-format.yml:
+Create a new workflow file, e.g. ./github/workflows/clang-format.yml:
 
 ```yaml
 # Run clang-format
@@ -33,8 +32,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run clang-format
       uses: HorstBaerbel/action-clang-format@master
-      # These are optional
+      # These are optional (defaults displayed)
       with:
         sourcedir: '.'
-        excludedir: './build'
+        excludedirs: 'build'
+        extensions: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
+        style: 'file'
 ```
+
+## Parameters
+
+* **sourcedir**: Source directory to scan, e.g. '/bla'.
+* **excludedirs**: Directories below sourcedir to exclude from scanning, e.g. "build,test,src/third_party".
+* **extensions**: Extensions to include in scan, e.g. 'h,c,hpp,cpp'.
+* **style**: Style string to pass to clang-format. Use 'file' to make clang-format use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file.

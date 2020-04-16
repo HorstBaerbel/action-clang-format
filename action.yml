@@ -9,13 +9,23 @@ inputs:
     description: 'Source directory'
     required: false
     default: '.'
-  excludedir:
-    description: 'Exclude directory'
+  excludedirs:
+    description: 'Exclude directories'
     required: false
-    default: './build'
+    default: 'build'
+  extensions:
+    description: 'File extensions to include in check'
+    required: false
+    default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
+  style:
+      description: 'Style string'
+      required: false
+      default: 'file'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.sourcedir }}
-    - ${{ inputs.excludedir }}
+    - ${{ inputs.excludedirs }}
+    - ${{ inputs.extensions }}
+    - ${{ inputs.style }}
