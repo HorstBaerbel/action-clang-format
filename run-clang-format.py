@@ -10,7 +10,11 @@ import os, sys, subprocess, multiprocessing
 manager = multiprocessing.Manager()
 failedfiles = manager.list()
 
-sourcedir = sys.argv[1].rstrip(os.sep)
+# Get absolute current path and remove trailing seperators
+currentdir = os.path.realpath(os.getcwd()).rstrip(os.sep)
+print("Arguments: " + str(sys.argv))
+# Get absolute source dir after removing leading and trailing seperators from input. 
+sourcedir = currentdir + sys.argv[1].lstrip(os.sep).rstrip(os.sep)
 print("Source directory: " + sourcedir)
 excludedirs = ()
 if sys.argv[2]:
@@ -43,4 +47,8 @@ pool = multiprocessing.Pool()
 pool.map(runclangformat, collectfiles(sourcedir, excludedirs, extensions))
 pool.close()
 pool.join()
-sys.exit(1 if len(failedfiles) > 0 else 0)
+if len(failedfiles) > 0:
+    print("Errors in " + len(failedfiles) + " files")
+    sys.exit(1)
+print("No errors found")
+sys.exit(0)

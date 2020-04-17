@@ -31,7 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format
-      uses: HorstBaerbel/action-clang-format@1.0
+      uses: HorstBaerbel/action-clang-format@1.2
       # These are optional (defaults displayed)
       with:
         scandir: '.'
@@ -42,7 +42,7 @@ jobs:
 
 ## Parameters (optional), see action.yml
 
-* **scandir**: Directory to scan, e.g. '/bla'.
-* **excludedirs**: Directories below scandir to exclude from scanning, e.g. "build,test,src/third_party".
+* **scandir**: Directory to scan, e.g. 'src'. MUST be realtive to you repository, thus '.' means root of repository. MUST contain a valid CMakeLists.txt.
+* **excludedirs**: Directories below scandir to exclude from scanning, e.g. "build,test,src/third_party". MUST be relative to scandir, thus 'test' means 'scandir/test'.
 * **extensions**: Extensions to include in scan, e.g. 'h,c,hpp,cpp'.
 * **style**: Style string to pass to clang-format. Use 'file' to make clang-format use a [.clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) file.
