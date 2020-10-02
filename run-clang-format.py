@@ -11,7 +11,7 @@ manager = multiprocessing.Manager()
 failedfiles = manager.list()
 
 # Get absolute current path and remove trailing seperators
-currentdir = os.path.realpath(os.getcwd()).rstrip(os.sep)
+currentdir = os.path.realpath(os.getcwd())
 print("Arguments: " + str(sys.argv))
 # Get absolute source dir after removing leading and trailing seperators from input. 
 sourcedir = currentdir + sys.argv[1].lstrip(os.sep).rstrip(os.sep)
