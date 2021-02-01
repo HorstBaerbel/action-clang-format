@@ -14,7 +14,7 @@ failedfiles = manager.list()
 currentdir = os.path.realpath(os.getcwd()).rstrip(os.sep)
 print("Arguments: " + str(sys.argv))
 # Get absolute source dir after removing leading and trailing seperators from input. 
-sourcedir = currentdir + sys.argv[1].lstrip(os.sep).rstrip(os.sep)
+sourcedir = os.path.join(currentdir,sys.argv[1].lstrip(os.sep).rstrip(os.sep))
 print("Source directory: " + sourcedir)
 excludedirs = ()
 if sys.argv[2]:
