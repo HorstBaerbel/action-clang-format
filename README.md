@@ -31,7 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format
-      uses: HorstBaerbel/action-clang-format@1.4
+      uses: HorstBaerbel/action-clang-format@1.5
       # These are optional (defaults displayed)
       with:
         scandir: '.'
