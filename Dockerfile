@@ -1,7 +1,10 @@
+# This is largely copied from https://github.com/HorstBaerbel/ccpp-cmake-build-and-test
+# But, we just get clang-format-12 from ubuntu-rolling (ubuntu:latest currently 20.04 doesn't have it).
 FROM ubuntu:rolling
 
 WORKDIR /
 
+# Timezone setup might be needed in order for packages to install properly.
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update
