@@ -1,4 +1,17 @@
-FROM horstbaerbel/ccpp-cmake-build-and-test:1.0
+FROM ubuntu:rolling
+
+WORKDIR /
+
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt update
+RUN apt -y dist-upgrade
+RUN apt -y install clang-format-12
+RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-12 100
+
+RUN apt -y autoclean
+RUN apt -y clean
+RUN rm -rf /var/lib/apt/lists/*
 
 LABEL "com.github.actions.name"="action-clang-format"
 LABEL "com.github.actions.description"="Run clang-format on source directory"
