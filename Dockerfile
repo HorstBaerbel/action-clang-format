@@ -1,5 +1,5 @@
 # This is largely copied from https://github.com/HorstBaerbel/ccpp-cmake-build-and-test
-# But, we just get clang-format-12 from ubuntu-rolling (ubuntu:latest currently 20.04 doesn't have it).
+# But, we just get a modern clang-format.
 FROM ubuntu:rolling
 
 WORKDIR /
@@ -9,8 +9,8 @@ ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update
 RUN apt -y dist-upgrade
-RUN apt -y install clang-format-12
-RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-12 100
+RUN apt -y install clang-format-14
+RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-14 100
 
 RUN apt -y autoclean
 RUN apt -y clean
