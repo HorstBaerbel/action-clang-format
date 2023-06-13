@@ -11,9 +11,14 @@ RUN apt update
 RUN apt -y dist-upgrade
 
 # Download clang-format-16 since ubuntu repos does not have it right now
+# The executable file is belong to clang+llvm-16.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+# which contains all executables from clang-16. To make the download lighter,
+# I only extracted the clang-format-16.
+# Here you can find the clang-format download page and the all files
+# https://github.com/llvm/llvm-project/releases/tag/llvmorg-16.0.0
 # TODO: Change it with `apt install clang-format-16` when ubuntu has it.
 RUN apt -y install wget
-RUN wget --no-check-certificate -O clang-format "https://drive.google.com/uc?export=download&id=1QCpf_BD_o_1vXyFQmis3DuorSfByRX4X"
+RUN wget --no-verbose --referer=https://veed.io https://cdn.veed.dev/rendernodeBuildDeps/clang-format/v16/clang-format
 RUN chmod +x clang-format
 RUN mv clang-format /usr/bin/
 
