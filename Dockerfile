@@ -9,8 +9,17 @@ ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update
 RUN apt -y dist-upgrade
-RUN apt -y install clang-format-14
-RUN update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-14 100
+
+# Download clang-format-16 since ubuntu repos does not have it right now
+# TODO: Change it with `apt install clang-format-16` when ubuntu has it.
+RUN apt -y install wget
+RUN wget --no-check-certificate -O clang-format "https://drive.google.com/uc?export=download&id=1QCpf_BD_o_1vXyFQmis3DuorSfByRX4X"
+RUN chmod +x clang-format
+RUN mv clang-format /usr/bin/
+
+# Dependencies for clang-format and python file.
+RUN apt -y install libncurses5
+RUN apt -y install python3
 
 RUN apt -y autoclean
 RUN apt -y clean

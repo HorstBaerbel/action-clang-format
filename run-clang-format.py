@@ -26,7 +26,7 @@ style = sys.argv[4]
 print("Style: " + style)
 
 def runclangformat(filepath):
-    print("Checking: " + filepath)
+    # print("Checking: " + filepath)
     # See: https://stackoverflow.com/questions/22866609/can-clang-format-tell-me-if-formatting-changes-are-necessary
     proc = subprocess.Popen("clang-format -style=" + style + " " + filepath + " | diff -u --color=always " + filepath + " -", shell=True)
     if proc.wait() != 0:
